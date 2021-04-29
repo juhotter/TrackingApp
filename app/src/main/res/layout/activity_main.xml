@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageButton
+        android:id="@+id/workoutPlan"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="#FFFFFF"
+        android:scaleType="fitXY"
+        android:src="@drawable/seletor_main_workout"
+        android:text="Workout"
+        android:visibility="visible" />
+
+
+    <ImageButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="129dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/seletor_main_tracking"
+        android:text="Trackbutton" />
+
+    <ImageButton
+        android:id="@+id/personals"
+        android:layout_width="match_parent"
+        android:layout_height="129dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/medals"
+        android:text="PersonalsButton" />
+
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#020202"
+        android:textSize="15dp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textColor="@color/white" />
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>
