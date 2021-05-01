@@ -14,17 +14,9 @@ public class PersonalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal);
 
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-        SharedPreferences.Editor editor = pref.edit();
 
 
-int myweight = 76;
-editor.putInt("myweight",myweight);
-        editor.commit();
 
-
-        TextView textViewGewicht = (TextView) findViewById(R.id.textViewVersion);
-        textViewGewicht.setText(pref.getInt("myweight",-1));
 
 
 

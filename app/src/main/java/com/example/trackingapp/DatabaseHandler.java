@@ -35,6 +35,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
+    //Table3
+    private static final String TABLE_PERSON = "person";
+    private static final String KEY_WEIGHT = "weight";
+    private static final String KEY_BENCH1RM = "benchmax";
+    private static final String KEY_DEADLIFTS1RM = "deadliftmax";
+    private static final String KEY_SQUATSMAX = "squatsmax";
+
+
+
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -55,8 +64,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_BENCH_SET_NR + " INTEGER" + ")";
 
 
+        String CREATE_TABLE_PERSON = "CREATE TABLE IF NOT EXISTS " + TABLE_PERSON + "("
+                + KEY_WEIGHT + " INTEGER PRIMARY KEY," + KEY_BENCH1RM + " INTEGER,"
+                + KEY_DEADLIFTS1RM + " INTEGER" + KEY_SQUATSMAX + "INTEGER" + ")";
+
+
+
+
+
         db.execSQL(CREATE_TABLE_WORKOUT);
         db.execSQL(CREATE_MAHLZEIT_TABLE);
+        db.execSQL(CREATE_TABLE_PERSON);
 
     }
 
@@ -66,6 +84,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CONTACTS);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_WORKOUT);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PERSON);
 
         // Create tables again
         onCreate(db);
