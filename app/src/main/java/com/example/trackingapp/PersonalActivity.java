@@ -25,6 +25,17 @@ public class PersonalActivity extends AppCompatActivity {
 
 
 
+//weight setzen
+        setContentView(R.layout.activity_personal);
+        TextView textViewWeight = (TextView) findViewById(R.id.textViewVersion);
+        Integer text = MainActivity.db2.getSinglePerson("julian").getWeight();
+        textViewWeight.setText(  text.toString());
+
+
+
+
+
+
 
         final ImageButton GewichtändernButton = findViewById(R.id.imageView);
         GewichtändernButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +66,8 @@ public class PersonalActivity extends AppCompatActivity {
                         MainActivity.db2.deleteAllPerson();
                         //die Person reinspecihern wieder mit dem ugedaten gewicht
                         MainActivity.db2.addPerson(person);
-
+                        Integer textraus = MainActivity.db2.getSinglePerson("julian").getWeight();
+                        textViewWeight.setText(  textraus.toString());
 
                         dialog2.dismiss();
                         Toast.makeText(getApplicationContext()," Neues Gewicht",Toast.LENGTH_SHORT).show();
