@@ -21,7 +21,7 @@ public class PersonalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal);
 
 //dummy data for begining
-        MainActivity.db2.addPerson(new Person("julian",100,100,100,100));
+        MainActivity.db2.addPerson(new Person("julian",80,100,100,100));
 
 
 
@@ -71,6 +71,18 @@ public class PersonalActivity extends AppCompatActivity {
 
                         dialog2.dismiss();
                         Toast.makeText(getApplicationContext()," Neues Gewicht",Toast.LENGTH_SHORT).show();
+
+                        Integer myweight = MainActivity.db2.getSinglePerson("julian").getWeight();
+                        Integer Grundumsatz =  (((int) (66.47 + (13.7 * myweight) + (5 * 180) - (6.8 * 23))));
+                        MainActivity.maxKalorien = Grundumsatz.toString();
+
+
+                        MainActivity.updateDaylyKalories();
+
+
+
+
+
                     }
 
                 }

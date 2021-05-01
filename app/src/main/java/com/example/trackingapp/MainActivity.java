@@ -25,6 +25,14 @@ public class MainActivity extends AppCompatActivity  {
      static ArrayAdapter adapter;
     static GesamtBerechnungen sum;
     static TextView textView;
+    static String maxKalorien = "0";
+    static double PALBüro = 1.45;
+    static double PALStudierenmitGehen = 1.65;
+    static double PALGehendStehend = 1.85;
+    static double PALharteArbeit = 2.2;
+
+
+
 
 
 
@@ -44,8 +52,11 @@ public class MainActivity extends AppCompatActivity  {
           sum.setGesamt();
           sum.getGesamt();
 
-
-
+//myweight
+Integer myweight = MainActivity.db2.getSinglePerson("julian").getWeight();
+        Toast.makeText(getApplicationContext()," herausglesen gewicht "+ myweight,Toast.LENGTH_SHORT).show();
+Integer Grundumsatz =  (((int) (66.47 + (13.7 * myweight) + (5 * 180) - (6.8 * 23))));
+       maxKalorien = Grundumsatz.toString();
 
 
 
@@ -53,7 +64,7 @@ public class MainActivity extends AppCompatActivity  {
         //textview
         setContentView(R.layout.activity_main);
          textView = (TextView) findViewById(R.id.textview);
-        textView.setText(sum.toString());
+        textView.setText(sum.toString() + "Grundumsatz " + maxKalorien);
 
 
 
@@ -255,7 +266,7 @@ public class MainActivity extends AppCompatActivity  {
 
     static public void updateDaylyKalories(){
         sum.setGesamt();
-        textView.setText(sum.toString());
+        textView.setText(sum.toString() +" Grundumsatz " +  maxKalorien);
     }
 
 
