@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
         db2 = new DatabaseHandler(this);
 
         //gesamtvariable mit 0 instanzieren und dann updatetn auf den aktuellen wert
