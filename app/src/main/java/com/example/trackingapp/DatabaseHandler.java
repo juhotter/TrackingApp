@@ -7,13 +7,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
-import java.util.List;
-
 
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 15;
     private static final String DATABASE_NAME = "MahlzeitDatabase";
 
 
@@ -37,10 +35,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Table3
     private static final String TABLE_PERSON = "person";
+    private static final String KEY_PERSONNAME = "personname";
     private static final String KEY_WEIGHT = "weight";
-    private static final String KEY_BENCH1RM = "benchmax";
-    private static final String KEY_DEADLIFTS1RM = "deadliftmax";
-    private static final String KEY_SQUATSMAX = "squatsmax";
+    private static final String KEY_BENCH1RM = "bench1Rm";
+    private static final String KEY_DEADLIFTS1RM = "deadlift1Rm";
+    private static final String KEY_SQUATSMAX = "squats1Rm";
 
 
 
@@ -65,8 +64,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         String CREATE_TABLE_PERSON = "CREATE TABLE IF NOT EXISTS " + TABLE_PERSON + "("
-                + KEY_WEIGHT + " INTEGER PRIMARY KEY," + KEY_BENCH1RM + " INTEGER,"
-                + KEY_DEADLIFTS1RM + " INTEGER" + KEY_SQUATSMAX + "INTEGER" + ")";
+                + KEY_PERSONNAME + " TEXT," + KEY_WEIGHT + " INTEGER," + KEY_BENCH1RM + " INTEGER,"
+                + KEY_DEADLIFTS1RM + " INTEGER," + KEY_SQUATSMAX + " INTEGER" + ")";
 
 
 
@@ -105,7 +104,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    // code to add the new contact
+
     void addSet(BenchSets benchset) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -118,6 +117,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         //2nd argument is String containing nullColumnHack
         db.close(); // Closing database connection
     }
+
+
+
+    void addPerson(Person person) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_PERSONNAME,person.getPersonname());
+        values.put(KEY_WEIGHT, person.getWeight());
+        values.put(KEY_BENCH1RM, person.getBench1Rm());
+        values.put(KEY_DEADLIFTS1RM,person.getDeadlift1Rm());
+        values.put(KEY_SQUATSMAX,person.getSquats1Rm());
+
+        // Inserting Row
+        db.insert(TABLE_PERSON, null, values);
+        //2nd argument is String containing nullColumnHack
+        db.close(); // Closing database connection
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -158,6 +185,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+
+    Person getSinglePerson(String namevonperson) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_PERSON, new String[] { KEY_PERSONNAME,KEY_WEIGHT,
+                        KEY_BENCH1RM, KEY_DEADLIFTS1RM,KEY_SQUATSMAX }, KEY_PERSONNAME + "=?",
+                new String[] { String.valueOf(namevonperson) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Person searchedPerson = new Person(
+                cursor.getString(0),
+                Integer.parseInt(cursor.getString(1)),
+                Integer.parseInt(cursor.getString(2)),
+                Integer.parseInt(cursor.getString(3)),
+                        Integer.parseInt(cursor.getString(4)));
+        //return Person
+        return searchedPerson;
+    }
 
 
 
@@ -213,13 +259,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-    // Deleting all contact
+    // Deleting all mahlzeiten
     public void deleteAllMahlzeiten() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CONTACTS,null,null);
         db.execSQL("delete from "+ TABLE_CONTACTS);
         db.close();
     }
+
+
+    // Deleting all contact
+    public void deleteAllPerson() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_PERSON,null,null);
+        db.execSQL("delete from "+ TABLE_PERSON);
+        db.close();
+    }
+
+
+
+
+
+
 
     // Deleting  contact
     public void deleteSingleMahlzeit(Mahlzeit mahlzeit) {

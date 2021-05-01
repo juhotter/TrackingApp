@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
