@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +23,8 @@ import java.util.List;
 public class PersonalActivity extends AppCompatActivity {
 
     AutoCompleteTextView acTextView;
-
-    ArrayList<String> auswahlDopDown = new ArrayList<String>();
+    Spinner spinnerActivity;
+    ArrayList<String> auswahlDropDown = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +34,9 @@ public class PersonalActivity extends AppCompatActivity {
 //dummy data for begining
         MainActivity.db2.addPerson(new Person("julian",80,100,100,100));
 
+        auswahlDropDown.add("Test");
 
-/*
-////iwas da geht nid und i weiß ned was
-        auswahlDopDown.add("test");
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice,auswahlDopDown);
-        acTextView = (AutoCompleteTextView) findViewById(R.id.languages);
-        //Set the number of characters the user must type before the drop down list is shown
-        acTextView.setAdapter(adapter2);
-        acTextView.setThreshold(0);
-        //Set the adapter
-        String welcheActivity = acTextView.getText().toString();
-*/
+
 
 
 
@@ -71,6 +63,11 @@ public class PersonalActivity extends AppCompatActivity {
                 dialog2.setContentView(R.layout.popup_window3);
                 Button dialogButton2 = (Button) dialog2.findViewById(R.id.neuesGewichtspeichern);
 
+
+                spinnerActivity = (Spinner) findViewById(R.id.spinner1);
+                ArrayAdapter myadapter = new ArrayAdapter(PersonalActivity.this,android.R.layout.simple_spinner_item,auswahlDropDown);
+                myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerActivity.setAdapter(myadapter);
 
 
 
