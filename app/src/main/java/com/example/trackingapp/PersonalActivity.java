@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -20,11 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PersonalActivity extends AppCompatActivity {
+public class PersonalActivity extends AppCompatActivity  {
 
-    AutoCompleteTextView acTextView;
-    Spinner spinnerActivity;
-    ArrayList<String> auswahlDropDown = new ArrayList<String>();
+    String[] country = { "PAL1", "PAL2", "PAL3", "PAL4", "PAL5"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class PersonalActivity extends AppCompatActivity {
 //dummy data for begining
         MainActivity.db2.addPerson(new Person("julian",80,100,100,100));
 
-        auswahlDropDown.add("Test");
+
 
 
 
@@ -62,12 +63,30 @@ public class PersonalActivity extends AppCompatActivity {
                 final Dialog dialog2 = new Dialog(PersonalActivity.this);
                 dialog2.setContentView(R.layout.popup_window3);
                 Button dialogButton2 = (Button) dialog2.findViewById(R.id.neuesGewichtspeichern);
+                Spinner spinnerActivity = (Spinner) dialog2.findViewById(R.id.spinner1);
+
+                spinnerActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view,
+                                               int pos, long id) {
+                        // Your code to do something with the selected item
+                    }
+                });
+
+                //Creating the ArrayAdapter instance having the country list
+                ArrayAdapter aa = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item,country);
+                aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                //Setting the ArrayAdapter data on the Spinner
+                spinnerActivity.setAdapter(aa);
 
 
-                spinnerActivity = (Spinner) findViewById(R.id.spinner1);
-                ArrayAdapter myadapter = new ArrayAdapter(PersonalActivity.this,android.R.layout.simple_spinner_item,auswahlDropDown);
-                myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerActivity.setAdapter(myadapter);
+
+
+
 
 
 
