@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity  {
     static double PALStudierenmitGehen = 1.65;
     static double PALGehendStehend = 1.85;
     static double PALharteArbeit = 2.2;
+    static double actualPal = 0.0;
 
 
 
@@ -54,6 +55,13 @@ public class MainActivity extends AppCompatActivity  {
           sum = new GesamtBerechnungen(0);
           sum.setGesamt();
           sum.getGesamt();
+
+
+
+//dummy data for begining
+db2.addPerson(new Person("julian",80,100,100,100));
+
+
 
 //myweight
 Integer myweight = MainActivity.db2.getSinglePerson("julian").getWeight();
@@ -269,7 +277,8 @@ Integer Grundumsatz =  (((int) (66.47 + (13.7 * myweight) + (5 * 180) - (6.8 * 2
 
     static public void updateDaylyKalories(){
         sum.setGesamt();
-        textView.setText(sum.toString() +" Grundumsatz " +  maxKalorien);
+        textView.setText(sum.toString() +" Grundumsatz " +  maxKalorien
+         + "Tagesverbrauch: " + Integer.parseInt(maxKalorien) * actualPal);
     }
 
 

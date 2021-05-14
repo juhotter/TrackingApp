@@ -23,7 +23,7 @@ import java.util.List;
 
 public class PersonalActivity extends AppCompatActivity  {
 
-    String[] country = { "PAL1", "PAL2", "PAL3", "PAL4", "PAL5"};
+    String[] country = { "PALBüro", "PALStudierenmitGehen", "PALGehendStehend", "PALharteArbeit"};
 
 
 
@@ -31,9 +31,6 @@ public class PersonalActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
-
-//dummy data for begining
-        MainActivity.db2.addPerson(new Person("julian",80,100,100,100));
 
 
 
@@ -73,6 +70,27 @@ public class PersonalActivity extends AppCompatActivity  {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view,
                                                int pos, long id) {
+
+                    if(pos == 1){
+                        MainActivity.actualPal = MainActivity.PALBüro;
+                        MainActivity.updateDaylyKalories();
+                    }
+                        if(pos == 2){
+                            MainActivity.actualPal = MainActivity.PALStudierenmitGehen;
+                            MainActivity.updateDaylyKalories();
+                        }
+                        if(pos == 3){
+                            MainActivity.actualPal = MainActivity.PALGehendStehend;
+                            MainActivity.updateDaylyKalories();
+                        }
+                        if(pos == 4){
+                            MainActivity.actualPal = MainActivity.PALharteArbeit;
+                            MainActivity.updateDaylyKalories();
+                        }
+
+
+
+
                         // Your code to do something with the selected item
                     }
                 });
