@@ -44,7 +44,11 @@ public class PersonalActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_personal);
         TextView textViewWeight = (TextView) findViewById(R.id.textViewVersion);
         Integer text = MainActivity.db2.getSinglePerson("julian").getWeight();
-        textViewWeight.setText(  text.toString());
+
+
+
+            textViewWeight.setText(text.toString() + "kg - with Actual Pal " + MainActivity.actualPal);
+
 
 
 
@@ -65,6 +69,7 @@ public class PersonalActivity extends AppCompatActivity  {
                 spinnerActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
+                        MainActivity.actualPal = MainActivity.actualPal;
                     }
 
                     @Override
@@ -120,10 +125,10 @@ public class PersonalActivity extends AppCompatActivity  {
                         View parentView = (View) v.getParent();
                         EditText et = (EditText)parentView.findViewById(R.id.neuesGewicht);
                         String text1 = et.getText().toString();
-
-
-
-
+                        if(text1.isEmpty()){
+                            int i  = MainActivity.db2.getSinglePerson("julian").getWeight();
+                            text1 = Integer.toString(i);
+                        }
 
 
 

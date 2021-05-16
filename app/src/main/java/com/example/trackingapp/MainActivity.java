@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+
 //dummy data for begining
 db2.addPerson(new Person("julian",80,100,100,100));
 
@@ -259,7 +260,7 @@ Integer Grundumsatz =  (((int) (66.47 + (13.7 * myweight) + (5 * 180) - (6.8 * 2
 
 
 
-
+updateDaylyKalories();
 }
 
 
@@ -277,8 +278,10 @@ Integer Grundumsatz =  (((int) (66.47 + (13.7 * myweight) + (5 * 180) - (6.8 * 2
 
     static public void updateDaylyKalories(){
         sum.setGesamt();
-        textView.setText(sum.toString() +" Grundumsatz " +  maxKalorien
-         + "Tagesverbrauch: " + Integer.parseInt(maxKalorien) * actualPal);
+        if(actualPal==0) actualPal = 1;
+        textView.setText(sum.toString() +
+                "\r\nGrundumsatz " +  maxKalorien
+         + "\r\nTagesverbrauch: " + (int)(Integer.parseInt(maxKalorien) * actualPal));
     }
 
 
