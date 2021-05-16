@@ -51,7 +51,8 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
 
-
+        TextView textviewpr = (TextView) findViewById(R.id.textViewVersion2);
+        textviewpr.setText("Bench:"+MainActivity.onermbench+"\r\nDeadlift:"+MainActivity.onermkreuz+"\r\nSquats:"+MainActivity.onermknie);
 
 
         final ImageButton GewichtändernButton = findViewById(R.id.imageView);

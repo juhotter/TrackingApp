@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity  {
     static double PALGehendStehend = 1.85;
     static double PALharteArbeit = 2.2;
     static double actualPal = 0.0;
-
+    static Integer onermbench;
+    static Integer onermkreuz;
+    static Integer onermknie;
 
 
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
 
+
         db2 = new DatabaseHandler(this);
 
         //gesamtvariable mit 0 instanzieren und dann updatetn auf den aktuellen wert
@@ -57,10 +60,43 @@ public class MainActivity extends AppCompatActivity  {
           sum.getGesamt();
 
 
+        String Bench = db2.getSingleBenchSet(2).toString(); // bench set zweites
+        String Kreuzheben = db2.getSingleBenchSet(17).toString(); // Kreuzheben zweites Set
+        String Kniebuege = db2.getSingleBenchSet(22).toString(); // Kniebeuge zweites Set
+
+        //jetz muss man aus 5x105 zb. das max errechnen
+        String SplittedBench[] = Bench.split("x");
+        String SplittedKreuzheben[] = Kreuzheben.split("x");
+        String SplittedSquats[] = Kniebuege.split("x");
+
+
+        Integer benchreps =  Integer.parseInt(SplittedBench[0]);
+        Integer benchweight =  Integer.parseInt(SplittedBench[1]);
+        Integer kreuzreps =  Integer.parseInt(SplittedKreuzheben[0]);
+        Integer kreuzweight =  Integer.parseInt(SplittedKreuzheben[1]);
+        Integer squatsreps =  Integer.parseInt(SplittedSquats[0]);
+        Integer squatsweight =  Integer.parseInt(SplittedSquats[1]);
+
+//jetz 1 RM BERECHNEN UND IN PERSON REINSPIELEN
+         onermbench = benchweight+benchweight*benchreps/30;
+         onermkreuz = kreuzweight+kreuzweight*kreuzreps/30;
+         onermknie = squatsweight+squatsweight*squatsreps/30;
 
 
 //dummy data for begining
-db2.addPerson(new Person("julian",80,100,100,100));
+db2.addPerson(new Person("julian",80,onermbench,onermkreuz,onermknie));
+
+
+
+
+//zuerst die aus der Liste herauslese aus der Datenbank
+        //dann in die andere Table speichern
+
+
+
+
+
+
 
 
 
