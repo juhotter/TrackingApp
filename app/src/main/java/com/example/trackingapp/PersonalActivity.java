@@ -95,9 +95,9 @@ public class PersonalActivity extends AppCompatActivity  {
                 int fivermprozentK = (int)(MainActivity.onermkreuz*0.86);
                 int fivermprozentKB =(int)( MainActivity.onermknie*0.86);
 
-                int tenperB =(int) MainActivity.onermbench*0.75);
-                int tenperK = (int)MainActivity.onermkreuz*0.75);
-                int tenperKB = (int)MainActivity.onermknie*0.75);
+                int tenperB =(int) (MainActivity.onermbench*0.75);
+                int tenperK = (int)(MainActivity.onermkreuz*0.75);
+                int tenperKB = (int)(MainActivity.onermknie*0.75);
 
 
                 int eightB = (int)(MainActivity.onermbench*0.80);
