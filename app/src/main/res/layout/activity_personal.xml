@@ -127,4 +127,15 @@
 
     </androidx.cardview.widget.CardView>
 
+
+    <ProgressBar
+        android:id="@+id/progressBarFood"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="133dp"
+        android:clickable="false"
+        android:progressDrawable="@drawable/circle"
+        android:progressTint="@color/red"
+
+        />
 </LinearLayout>

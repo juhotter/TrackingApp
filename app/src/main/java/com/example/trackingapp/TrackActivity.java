@@ -49,6 +49,7 @@ if(TextUtils.isEmpty(text)){
                 Toast.makeText(getApplicationContext()," geadded..!!",Toast.LENGTH_SHORT).show();
                 MainActivity.db2.addContact(new Mahlzeit(text, Integer.parseInt(text2)));
 
+
                 //jetz bei der Main den update button ausführen
                 MainActivity.reloadAllData();
                 MainActivity.updateDaylyKalories();

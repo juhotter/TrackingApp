@@ -13,6 +13,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,13 @@ public class PersonalActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_personal);
 
 
+
+        ProgressBar mProgressBar2=(ProgressBar)findViewById(R.id.progressBarFood);
+
+        MainActivity.updateDaylyKalories();
+       
+        mProgressBar2.setProgress(MainActivity.sum.getGesamt());
+        mProgressBar2.setMax(    (int)(Integer.parseInt(MainActivity.maxKalorien) * MainActivity.actualPal));
 
 
 
