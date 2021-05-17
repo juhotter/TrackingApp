@@ -35,6 +35,21 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ProgressBar mProgressBar2=(ProgressBar)findViewById(R.id.progressBarFood);
 
         MainActivity.updateDaylyKalories();
@@ -63,31 +78,42 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
 
-         ImageButton andereRMs = findViewById(R.id.imageView2);
+
+
+
+        ImageButton andereRMs = findViewById(R.id.imageView2);
         andereRMs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //make the pop up fenster
                 final Dialog dialog4 = new Dialog(PersonalActivity.this);
                 dialog4.setContentView(R.layout.popup_window4);
                 TextView textViewfiverm = (TextView) dialog4.findViewById(R.id.fiverm);
                 TextView textvieweightrm = (TextView) dialog4.findViewById(R.id.eightrm);
                 TextView textviewtenrm = (TextView) dialog4.findViewById(R.id.tenrm);
-               textViewfiverm.setText("Bench:"+ MainActivity.onermbench.toString() + "\r\nDeadlift:" + MainActivity.onermkreuz.toString()+ "\r\nSquats:" + MainActivity.onermknie.toString());
-                textvieweightrm.setText("Bench:"+ MainActivity.onermbench + "\r\nDeadlift:" + MainActivity.onermkreuz+ "\r\nSquats:" + MainActivity.onermknie);
-                textviewtenrm.setText("Bench:"+ MainActivity.onermbench + "\r\nDeadlift:" + MainActivity.onermkreuz+ "\r\nSquats:" + MainActivity.onermknie);
+
+                int fivermprozentB =(int) (MainActivity.onermbench*0.86);
+                int fivermprozentK = (int)(MainActivity.onermkreuz*0.86);
+                int fivermprozentKB =(int)( MainActivity.onermknie*0.86);
+
+                int tenperB =(int) MainActivity.onermbench*0.75);
+                int tenperK = (int)MainActivity.onermkreuz*0.75);
+                int tenperKB = (int)MainActivity.onermknie*0.75);
 
 
+                int eightB = (int)(MainActivity.onermbench*0.80);
+                int eightK = (int)(MainActivity.onermkreuz*0.80);
+                int eightKB = (int)(MainActivity.onermknie*0.80);
+
+
+              textViewfiverm.setText("5RM - Bench:"+ fivermprozentB + "kg\r\nDeadlift:" + fivermprozentK+ "kg\r\nSquats:" + fivermprozentKB+"kg");
+                textvieweightrm.setText("8RM - Bench:"+ tenperB + "kg\r\nDeadlift:" + tenperK+ "kg\r\nSquats:" + tenperKB+"kg");
+                textviewtenrm.setText("10RM - Bench:"+ eightB + "kg\r\nDeadlift:" + eightK+ "kg\r\nSquats:" + eightKB+"kg");
+
+                dialog4.show();
 
 
             }
-
         });
-
-
-
-
-
 
 
         final ImageButton GewichtändernButton = findViewById(R.id.imageView);
@@ -211,15 +237,6 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
 
-
-
-
-
-/*
-
-
-
-*/
 
 
 
