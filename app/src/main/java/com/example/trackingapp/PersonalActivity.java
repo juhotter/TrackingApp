@@ -38,14 +38,14 @@ public class PersonalActivity extends AppCompatActivity  {
         ProgressBar mProgressBar2=(ProgressBar)findViewById(R.id.progressBarFood);
 
         MainActivity.updateDaylyKalories();
-       
+/*
         mProgressBar2.setProgress(MainActivity.sum.getGesamt());
         mProgressBar2.setMax(    (int)(Integer.parseInt(MainActivity.maxKalorien) * MainActivity.actualPal));
 
+*/
 
-
-
-
+        mProgressBar2.setProgress(100);
+        mProgressBar2.setMax(200);
 
 
 //weight setzen
@@ -59,7 +59,35 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
             TextView textviewpr = (TextView) findViewById(R.id.textViewVersion2);
-        textviewpr.setText("Bench:"+MainActivity.onermbench+"\r\nDeadlift:"+MainActivity.onermkreuz+"\r\nSquats:"+MainActivity.onermknie);
+        textviewpr.setText("1RM`s\nBench:"+MainActivity.onermbench+"\r\nDeadlift:"+MainActivity.onermkreuz+"\r\nSquats:"+MainActivity.onermknie);
+
+
+
+         ImageButton andereRMs = findViewById(R.id.imageView2);
+        andereRMs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //make the pop up fenster
+                final Dialog dialog4 = new Dialog(PersonalActivity.this);
+                dialog4.setContentView(R.layout.popup_window4);
+                TextView textViewfiverm = (TextView) dialog4.findViewById(R.id.fiverm);
+                TextView textvieweightrm = (TextView) dialog4.findViewById(R.id.eightrm);
+                TextView textviewtenrm = (TextView) dialog4.findViewById(R.id.tenrm);
+               textViewfiverm.setText("Bench:"+ MainActivity.onermbench.toString() + "\r\nDeadlift:" + MainActivity.onermkreuz.toString()+ "\r\nSquats:" + MainActivity.onermknie.toString());
+                textvieweightrm.setText("Bench:"+ MainActivity.onermbench + "\r\nDeadlift:" + MainActivity.onermkreuz+ "\r\nSquats:" + MainActivity.onermknie);
+                textviewtenrm.setText("Bench:"+ MainActivity.onermbench + "\r\nDeadlift:" + MainActivity.onermkreuz+ "\r\nSquats:" + MainActivity.onermknie);
+
+
+
+
+            }
+
+        });
+
+
+
+
+
 
 
         final ImageButton GewichtändernButton = findViewById(R.id.imageView);
