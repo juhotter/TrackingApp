@@ -421,6 +421,7 @@ public class WorkoutActivity extends AppCompatActivity {
                         MainActivity.db2.updateBenchSet(new BenchSets(text2,2));
                         check2.setText(MainActivity.db2.getSingleBenchSet(2).toString());
 
+                        MainActivity.updateWeightRecords();
                         dialog.dismiss();
                         Toast.makeText(getApplicationContext(),"set geschafft..!!",Toast.LENGTH_SHORT).show();
                     }
@@ -889,7 +890,7 @@ public class WorkoutActivity extends AppCompatActivity {
                         //Datenbankinhalt updaten und check updaten
                         MainActivity.db2.updateBenchSet(new BenchSets(text6,17));
                         checkheben2.setText(MainActivity.db2.getSingleBenchSet(17).toString());
-
+                        MainActivity.updateWeightRecords();
                         dialog.dismiss();
                         Toast.makeText(getApplicationContext()," set geschafft..!!",Toast.LENGTH_SHORT).show();
                     }
@@ -1041,7 +1042,7 @@ public class WorkoutActivity extends AppCompatActivity {
                         //Datenbankinhalt updaten und check updaten
                         MainActivity.db2.updateBenchSet(new BenchSets(text6,22));
                         checkbeugen2.setText(MainActivity.db2.getSingleBenchSet(22).toString());
-
+                        MainActivity.updateWeightRecords();
                         dialog.dismiss();
                         Toast.makeText(getApplicationContext()," set geschafft..!!",Toast.LENGTH_SHORT).show();
                     }

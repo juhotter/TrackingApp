@@ -50,8 +50,7 @@ public class PersonalActivity extends AppCompatActivity  {
             textViewWeight.setText(text.toString() + "kg - with Actual Pal " + MainActivity.actualPal);
 
 
-
-        TextView textviewpr = (TextView) findViewById(R.id.textViewVersion2);
+            TextView textviewpr = (TextView) findViewById(R.id.textViewVersion2);
         textviewpr.setText("Bench:"+MainActivity.onermbench+"\r\nDeadlift:"+MainActivity.onermkreuz+"\r\nSquats:"+MainActivity.onermknie);
 
 

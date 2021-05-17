@@ -35,22 +35,15 @@
                     android:hint="Kalorien"
                     android:inputType="number" />
 
-                <LinearLayout
+
+                <ImageButton
+                    android:id="@+id/saveinDatabaseButton"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:orientation="vertical"
-                    tools:layout_editor_absoluteX="200dp"
-                    tools:layout_editor_absoluteY="162dp">
+                    android:layout_height="125dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/food" />
 
 
-                    <ImageButton
-                        android:id="@+id/saveinDatabaseButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitStart"
-                        android:src="@drawable/food" />
-
-                </LinearLayout>
             </com.google.android.material.textfield.TextInputLayout>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
