@@ -53,11 +53,11 @@ public class PersonalActivity extends AppCompatActivity  {
         ProgressBar mProgressBar2=(ProgressBar)findViewById(R.id.progressBarFood);
 
         MainActivity.updateDaylyKalories();
-/*
+
         mProgressBar2.setProgress(MainActivity.sum.getGesamt());
         mProgressBar2.setMax(    (int)(Integer.parseInt(MainActivity.maxKalorien) * MainActivity.actualPal));
 
-*/
+
 
         mProgressBar2.setProgress(100);
         mProgressBar2.setMax(200);
@@ -95,14 +95,14 @@ public class PersonalActivity extends AppCompatActivity  {
                 int fivermprozentK = (int)(MainActivity.onermkreuz*0.86);
                 int fivermprozentKB =(int)( MainActivity.onermknie*0.86);
 
-                int tenperB =(int) (MainActivity.onermbench*0.75);
-                int tenperK = (int)(MainActivity.onermkreuz*0.75);
-                int tenperKB = (int)(MainActivity.onermknie*0.75);
+                int tenperB =(int) (MainActivity.onermbench*0.80);
+                int tenperK = (int)(MainActivity.onermkreuz*0.80);
+                int tenperKB = (int)(MainActivity.onermknie*0.80);
 
 
-                int eightB = (int)(MainActivity.onermbench*0.80);
-                int eightK = (int)(MainActivity.onermkreuz*0.80);
-                int eightKB = (int)(MainActivity.onermknie*0.80);
+                int eightB = (int)(MainActivity.onermbench*0.75);
+                int eightK = (int)(MainActivity.onermkreuz*0.75);
+                int eightKB = (int)(MainActivity.onermknie*0.75);
 
 
               textViewfiverm.setText("5RM - Bench:"+ fivermprozentB + "kg\r\nDeadlift:" + fivermprozentK+ "kg\r\nSquats:" + fivermprozentKB+"kg");
@@ -138,19 +138,19 @@ public class PersonalActivity extends AppCompatActivity  {
                     public void onItemSelected(AdapterView<?> parent, View view,
                                                int pos, long id) {
 
-                    if(pos == 1){
+                    if(pos == 0){
                         MainActivity.actualPal = MainActivity.PALBüro;
                         MainActivity.updateDaylyKalories();
                     }
-                        if(pos == 2){
+                        if(pos == 1){
                             MainActivity.actualPal = MainActivity.PALStudierenmitGehen;
                             MainActivity.updateDaylyKalories();
                         }
-                        if(pos == 3){
+                        if(pos == 2){
                             MainActivity.actualPal = MainActivity.PALGehendStehend;
                             MainActivity.updateDaylyKalories();
                         }
-                        if(pos == 4){
+                        if(pos == 3){
                             MainActivity.actualPal = MainActivity.PALharteArbeit;
                             MainActivity.updateDaylyKalories();
                         }

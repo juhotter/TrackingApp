@@ -104,7 +104,7 @@ public class WorkoutActivity extends AppCompatActivity {
 
 
 
-
+/*
         //war nur zum ersten befüllen der Datenbank notwendig - m,aybe für neue sätze wieder
         MainActivity.db2.addSet(new BenchSets("5x105",1));
         MainActivity.db2.addSet(new BenchSets("5x105",2));
@@ -150,7 +150,7 @@ public class WorkoutActivity extends AppCompatActivity {
         MainActivity.db2.addSet(new BenchSets("5x105",42));
         MainActivity.db2.addSet(new BenchSets("5x105",43));
         MainActivity.db2.addSet(new BenchSets("5x105",44));
-
+*/
 
 
 

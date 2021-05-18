@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity  {
     static Integer onermbench;
     static Integer onermkreuz;
     static Integer onermknie;
-static int flagforText = 0;
+
 
 
 
@@ -47,12 +47,83 @@ static int flagforText = 0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
-
         db2 = new DatabaseHandler(this);
+
+        //war nur zum ersten befüllen der Datenbank notwendig - m,aybe für neue sätze wieder
+        MainActivity.db2.addSet(new BenchSets("5x105",1));
+        MainActivity.db2.addSet(new BenchSets("5x105",2));
+        MainActivity.db2.addSet(new BenchSets("5x105",3));
+        MainActivity.db2.addSet(new BenchSets("5x105",4));
+        MainActivity.db2.addSet(new BenchSets("5x105",5));
+        MainActivity.db2.addSet(new BenchSets("5x105",6));
+        MainActivity.db2.addSet(new BenchSets("5x105",7));
+        MainActivity.db2.addSet(new BenchSets("5x105",8));
+        MainActivity.db2.addSet(new BenchSets("5x105",9));
+        MainActivity.db2.addSet(new BenchSets("5x105",10));
+        MainActivity.db2.addSet(new BenchSets("5x105",11));
+        MainActivity.db2.addSet(new BenchSets("5x105",12));
+        MainActivity.db2.addSet(new BenchSets("5x105",13));
+        MainActivity.db2.addSet(new BenchSets("5x105",14));
+        MainActivity.db2.addSet(new BenchSets("5x105",15));
+        MainActivity.db2.addSet(new BenchSets("5x105",16));
+        MainActivity.db2.addSet(new BenchSets("5x105",17));
+        MainActivity.db2.addSet(new BenchSets("5x105",18));
+        MainActivity.db2.addSet(new BenchSets("5x105",19));
+        MainActivity.db2.addSet(new BenchSets("5x105",20));
+        MainActivity.db2.addSet(new BenchSets("5x105",21));
+        MainActivity.db2.addSet(new BenchSets("5x105",22));
+        MainActivity.db2.addSet(new BenchSets("5x105",23));
+        MainActivity.db2.addSet(new BenchSets("5x105",24));
+        MainActivity.db2.addSet(new BenchSets("5x105",25));
+        MainActivity.db2.addSet(new BenchSets("5x105",26));
+        MainActivity.db2.addSet(new BenchSets("5x105",27));
+        MainActivity.db2.addSet(new BenchSets("5x105",28));
+        MainActivity.db2.addSet(new BenchSets("5x105",29));
+        MainActivity.db2.addSet(new BenchSets("5x105",30));
+        MainActivity.db2.addSet(new BenchSets("5x105",31));
+        MainActivity.db2.addSet(new BenchSets("5x105",32));
+        MainActivity.db2.addSet(new BenchSets("5x105",33));
+        MainActivity.db2.addSet(new BenchSets("5x105",34));
+        MainActivity.db2.addSet(new BenchSets("5x105",35));
+        MainActivity.db2.addSet(new BenchSets("5x105",36));
+        MainActivity.db2.addSet(new BenchSets("5x105",37));
+        MainActivity.db2.addSet(new BenchSets("5x105",38));
+        MainActivity.db2.addSet(new BenchSets("5x105",39));
+        MainActivity.db2.addSet(new BenchSets("5x105",40));
+        MainActivity.db2.addSet(new BenchSets("5x105",41));
+        MainActivity.db2.addSet(new BenchSets("5x105",42));
+        MainActivity.db2.addSet(new BenchSets("5x105",43));
+        MainActivity.db2.addSet(new BenchSets("5x105",44));
+
+
+        String Bench = db2.getSingleBenchSet(2).toString(); // bench set zweites
+        String Kreuzheben = db2.getSingleBenchSet(17).toString(); // Kreuzheben zweites Set
+        String Kniebuege = db2.getSingleBenchSet(22).toString(); // Kniebeuge zweites Set
+
+        //jetz muss man aus 5x105 zb. das max errechnen
+        String SplittedBench[] = Bench.split("x");
+        String SplittedKreuzheben[] = Kreuzheben.split("x");
+        String SplittedSquats[] = Kniebuege.split("x");
+
+
+        Integer benchreps =  Integer.parseInt(SplittedBench[0]);
+        Integer benchweight =  Integer.parseInt(SplittedBench[1]);
+        Integer kreuzreps =  Integer.parseInt(SplittedKreuzheben[0]);
+        Integer kreuzweight =  Integer.parseInt(SplittedKreuzheben[1]);
+        Integer squatsreps =  Integer.parseInt(SplittedSquats[0]);
+        Integer squatsweight =  Integer.parseInt(SplittedSquats[1]);
+
+//jetz 1 RM BERECHNEN UND IN PERSON REINSPIELEN
+        onermbench = benchweight+benchweight*benchreps/30;
+        onermkreuz = kreuzweight+kreuzweight*kreuzreps/30;
+        onermknie = squatsweight+squatsweight*squatsreps/30;
+
+
+//dummy data for begining
+        db2.addPerson(new Person("julian",80,onermbench,onermkreuz,onermknie));
+
+
+
 
         //gesamtvariable mit 0 instanzieren und dann updatetn auf den aktuellen wert
           sum = new GesamtBerechnungen(0);
@@ -64,8 +135,6 @@ static int flagforText = 0;
 
 
 
-//zuerst die aus der Liste herauslese aus der Datenbank
-        //dann in die andere Table speichern
 
 
 
@@ -289,7 +358,6 @@ updateDaylyKalories();
 
     static public void updateDaylyKalories(){
         sum.setGesamt();
-        if(actualPal==0) actualPal = 1;
         textView.setText(sum.toString() +
                 "\r\nGrundumsatz " +  maxKalorien
          + "\r\nTagesverbrauch: " + (int)(Integer.parseInt(maxKalorien) * actualPal));
