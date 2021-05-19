@@ -51,16 +51,18 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
         ProgressBar mProgressBar2=(ProgressBar)findViewById(R.id.progressBarFood);
+        mProgressBar2.setMax( 100);
+        mProgressBar2.setProgress(50);
+//set default
 
-        MainActivity.updateDaylyKalories();
-
+        /*
         mProgressBar2.setProgress(MainActivity.sum.getGesamt());
         mProgressBar2.setMax(    (int)(Integer.parseInt(MainActivity.maxKalorien) * MainActivity.actualPal));
+*/
 
 
 
-        mProgressBar2.setProgress(100);
-        mProgressBar2.setMax(200);
+
 
 
 //weight setzen
@@ -247,4 +249,6 @@ public class PersonalActivity extends AppCompatActivity  {
 
 
     }
+
+
 }
